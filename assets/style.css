@@ -1,9 +1,7 @@
 .hidden {
   display: none;
 }
-
 .btn {
-  display: block;
-  width: 25%;
-  margin-bottom: 5px;
+  width: 75%;
+  
 }

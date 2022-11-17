@@ -13,8 +13,11 @@ const choices = document.getElementById("choices");
 const quizEnd = document.getElementById("end-screen");
 const questionDisplay = document.getElementById("questions");
 const finalScore = document.getElementById("highscore");
-const initials = document.getElementById("initials");   
+const initials = document.getElementById("initials");
+const submit = document.getElementById("submit");
+const results = document.getElementById("result");
 startBtn.addEventListener("click", startQuiz);
+submit.addEventListener("click", leaderboard);
 
 function startQuiz() {
   startScrn.classList.add("hidden");
@@ -42,7 +45,7 @@ function getQuestion() {
     var options = questionCurrent.option[i];
     var optionButton = document.createElement("option");
     optionButton.addEventListener("click", questionClick);
-    optionButton.classList.add("btn", "btn-primary");
+    optionButton.classList.add("btn", "btn-primary", "mx-auto");
     optionButton.setAttribute("value", questionCurrent.option[i]);
     optionButton.textContent = i + 1 + ". " + options;
 
@@ -57,11 +60,12 @@ function questionClick(event) {
   }
 
   if (selected.value === questions[currentQuestionId].answer) {
-    // add text display
+    results.textContent = "Correct!";
     // sfxRight.play();
     console.log("hello");
   } else {
     time -= 15;
+    results.textContent = "Wrong!";
     if (time < 0) {
       time = 0;
     }
@@ -89,7 +93,7 @@ function leaderboard() {
     var highscore = JSON.parse(window.localStorage.getItem("highscore")) || [];
 
     var scoreUpdate = {
-      initials: initials,
+      initials: initialsId,
       score: time,
     };
     highscore.push(scoreUpdate);
@@ -97,5 +101,3 @@ function leaderboard() {
   }
   window.location.href = "scores.html";
 }
-
-
