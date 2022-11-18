@@ -1,7 +1,7 @@
 const clearHistory = document.getElementById("clear");
 const leaderboard = document.getElementById("scores");
 clearHistory.addEventListener("click", clearLeaderboard);
-
+// generate and manage highscores
 function highScores() {
   var highScores = JSON.parse(window.localStorage.getItem("highscore")) || [];
   console.log(highScores);
@@ -14,6 +14,7 @@ function highScores() {
     leaderboard.appendChild(list);
   }
 }
+// clear leaderboard
 function clearLeaderboard() {
   window.localStorage.removeItem("highscore");
   window.location.reload();

@@ -18,13 +18,14 @@ const submit = document.getElementById("submit");
 const results = document.getElementById("result");
 startBtn.addEventListener("click", startQuiz);
 submit.addEventListener("click", leaderboard);
-
+// Start up the quiz
 function startQuiz() {
   startScrn.classList.add("hidden");
   questionDisplay.classList.toggle("hidden");
   timeDisplay.textContent = time;
   timer = setInterval(function () {
     time--;
+    timeDisplay.textContent = time;
 
     if (time <= 0) {
       time = 0;
@@ -35,7 +36,7 @@ function startQuiz() {
   }, 1000);
   getQuestion();
 }
-
+// generate questions
 function getQuestion() {
   var questionCurrent = questions[currentQuestionId];
   questionTitle.textContent = questionCurrent.title;
@@ -52,7 +53,7 @@ function getQuestion() {
     choices.appendChild(optionButton);
   }
 }
-
+// logic for answering questions
 function questionClick(event) {
   const selected = event.target;
   if (!selected.matches(".btn-primary")) {
@@ -61,8 +62,6 @@ function questionClick(event) {
 
   if (selected.value === questions[currentQuestionId].answer) {
     results.textContent = "Correct!";
-    // sfxRight.play();
-    console.log("hello");
   } else {
     time -= 15;
     results.textContent = "Wrong!";
@@ -71,6 +70,10 @@ function questionClick(event) {
     }
     timeDisplay.textContent = time;
   }
+  results.classList.toggle("hidden");
+  setTimeout(function () {
+    results.classList.toggle("hidden");
+  }, 500);
 
   currentQuestionId++;
   if (time <= 0 || currentQuestionId === questions.length) {
@@ -79,14 +82,14 @@ function questionClick(event) {
     getQuestion();
   }
 }
-
+// End quiz logic
 function endQuiz() {
   clearInterval(timer);
   quizEnd.classList.toggle("hidden");
   questionDisplay.classList.toggle("hidden");
   finalScore.textContent = time;
 }
-
+// store leaderboard scores
 function leaderboard() {
   const initialsId = initials.value.trim();
   if (initialsId !== "") {

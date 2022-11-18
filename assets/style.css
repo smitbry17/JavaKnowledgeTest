@@ -3,5 +3,14 @@
 }
 .btn {
   width: 75%;
-  
+}
+#result {
+  border-top: 4px solid rgb(40, 6, 233);
+  margin-top: 10px;
+}
+.start {
+  background-image: url(/images/paint.png);
+}
+.btn-dark {
+  margin-bottom: 10px;
 }

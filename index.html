@@ -13,12 +13,18 @@
 
     <link rel="stylesheet" href="./assets/style.css" />
   </head>
-
+<!-- view highscore button-->
   <body>
-    <div class="scores"><a href="scores.html">View Highscores</a></div>
+    <div class="d-flex justify-content-between p-4">
+      <div class="scores">
+        <a class="btn btn-outline-success" href="scores.html"
+          >View Highscores</a
+        >
+      </div>
 
-    <div class="timer">Time: <span id="time"></span></div>
-
+      <div class="timer display-4">Time: <span id="time"></span></div>
+    </div>
+    <!-- Start Quiz Screen-->
     <div class="container text-center">
       <div id="start-screen" class="start">
         <h1>Coding Challenge</h1>
@@ -27,17 +33,17 @@
           mind that incorrect answers will penalize your score/time by 15
           seconds!
         </p>
-        <button id="start" type="button" class="btn btn-info">
+        <button id="start" type="button image/paint.png" class="btn btn-info">
           Start Quiz
         </button>
       </div>
-
+<!-- Question block-->
       <div id="questions" class="hidden">
         <h2 id="question-title"></h2>
         <div id="choices" class="choices d-grid gap-2"></div>
         <div id="result" class="hidden"></div>
       </div>
-
+<!-- End Game screen-->
       <div id="end-screen" class="hidden">
         <h2>All done!</h2>
         <p>Your final score is <span id="highscore"></span>.</p>
@@ -49,7 +55,7 @@
 
       <div id="feedback" class="feedback hide"></div>
     </div>
-
+<!-- closing script links-->
     <script src="./js/questions.js"></script>
     <script src="./js/script.js"></script>
     <script
